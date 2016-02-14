@@ -1,0 +1,11 @@
+.DS_Store
+.directory
+Thumbs.db
+core
+*.swp
+*~
+*.bak
+*.log
+node_modules
+.stack-work
+dist/
