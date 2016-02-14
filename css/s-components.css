@@ -1,0 +1,6 @@
+@keyframes dropdown-open { from { transform: scaleY(0); }
+  to { transform: scaleY(1); } }
+
+.s-dropdown { outline: none; display: inline-block; }
+
+.s-dropdown.s-animate.open .s-dropdown-menu { transform-origin: top; animation: dropdown-open .2s ease-out 0s; }

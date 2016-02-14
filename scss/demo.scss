@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+@import "variables";
+
+.box-shadow {
+  box-shadow: 1px 1px 3px rgba(55,55,55,0.25);
+}
+
+.card-code {
+  padding: 1.6rem 1.6rem 0.6rem 1.6rem;
+  background: $gray-lightest;
+}
+
+.component {
+  padding: $card-spacer-y $card-spacer-x;
+
+  .name {
+    font-family: $font-family-serif;
+    color: $gray-dark;
+  }
+
+  .content {
+    margin: 1.6rem 1.6rem 0 1.6rem;
+  }
+}
+
+.footer {
+  background: $gray-lighter;
+  padding: 1.6rem;
+  text-align: center;
+}
+
+.main {
+  margin: 1.6rem 0 1.6rem 0;
+}
+
+.navbar-brand {
+  font-family: $font-family-serif;
+}
+
+.preview-component {
+  margin: 2.56rem 1.6rem;
+}
+
+.sidenav-header {
+  font-family: $font-family-serif;
+  font-size: $font-size-h5;
+  margin-bottom: 0.75rem;
+}
+
+.sidenav-nav {
+  padding-left: 0.414rem;
+}

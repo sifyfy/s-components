@@ -1,0 +1,29 @@
+{
+  "name": "s-components",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "stack test",
+    "componentcss": "node_modules/.bin/node-sass --include-path node_modules/bootstrap/scss --output-style compact scss/s-components.scss css/s-components.css",
+    "democss": "node_modules/.bin/node-sass --include-path node_modules/bootstrap/scss --output-style compact scss/demo.scss dist/demo.css",
+    "precss": "mkdir -p css",
+    "css": "npm run componentcss && npm run democss",
+    "stack": "stack build",
+    "prebuild": "mkdir -p dist",
+    "build": "npm run css && npm run stack",
+    "postbuild": "bash -c 'PATH=node_modules/.bin:$PATH ccjs $(stack path --local-install-root)/bin/s-components-demo.jsexe/all.js --compilation_level=SIMPLE_OPTIMIZATIONS --externs=node > dist/s-components-demo.js'"
+  },
+  "author": "Siphilia <siphilia.rn@gmail.com>",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "bootstrap": "^4.0.0-alpha.2",
+    "closurecompiler": "^1.5.2",
+    "node-sass": "^3.4.2",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  }
+}
