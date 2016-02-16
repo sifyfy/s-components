@@ -2,6 +2,7 @@
 module Main where
 
 import           Control.Lens
+import           Data.Monoid
 import           Data.Text                       (Text, unpack)
 import           React.Flux                      (($=), (@=))
 import qualified React.Flux                      as RF
@@ -91,15 +92,44 @@ dropdownA_ = dropdown_ (set dropdownPropertyAnimation True defaultDropdownProper
         dropdownItem_' "Item E"
 |]
 
+timerPreview_ :: RF.ReactElementM eventHandler ()
+timerPreview_ = do
+    previewAndCode_ "Basic" (timer_ 3700) code
+    previewAndCode_ "Custom" custom_ customCode_
+  where
+    code = RF.pre_ $ RF.elemText $ unpack [st|import React.Flux.Component.SComponent
+remain_ :: ReactElementM eventHandler ()
+remain_ = timer_ 3700
+|]
+
+    custom_ = timer_' $ timerPropertySeconds .~ 4800
+                      $ timerPropertyViewType .~ TimerHoursMinutesSeconds
+                      $ timerPropertyHoursSuffix .~ "時間"
+                      $ timerPropertyMinutesSuffix .~ "分"
+                      $ timerPropertySecondsSuffix .~ "秒"
+                      $ defaultTimerProperty
+
+    customCode_ = RF.pre_ $ RF.elemText $ unpack [st|import React.Flux.Component.SComponent
+remain_ :: ReactElementM eventHandler ()
+remain_ = timer_' $ timerPropertySeconds .~ 4800
+                  $ timerPropertyViewType .~ TimerHoursMinutesSeconds
+                  $ timerPropertyHoursSuffix .~ "時間"
+                  $ timerPropertyMinutesSuffix .~ "分"
+                  $ timerPropertySecondsSuffix .~ "秒"
+                  $ defaultTimerProperty
+|]
+
 main_ :: RF.ReactElementM eventHandler ()
-main_ = RF.main_ $
+main_ = RF.main_ $ do
     section_ "dropdown" "Dropdown" dropdownPreview_
+    section_ "timer" "Timer" timerPreview_
 
 sidenav_ :: RF.ReactElementM eventHandler ()
 sidenav_ = do
     RF.h1_ ["className" $= "sidenav-header"] "Components"
-    RF.nav_ ["className" $= "sidenav-nav nav nav-stacked"] $
+    RF.nav_ ["className" $= "sidenav-nav nav nav-stacked"] $ do
         navItem "#dropdown" "Dropdown"
+        navItem "#timer" "Timer"
   where
     navItem href = RF.a_ ["className" $= "nav-item nav-link", "href" $= href]
 
