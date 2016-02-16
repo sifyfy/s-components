@@ -17,6 +17,7 @@ library
   hs-source-dirs:   src
   exposed-modules:  React.Flux.Component.SComponent
                   , React.Flux.Component.SComponent.Dropdown
+                  , React.Flux.Component.SComponent.Internal.Import
                   , React.Flux.Component.SComponent.Internal.Util
                   , React.Flux.Component.SComponent.Types
   build-depends:    base        >= 4.7 && < 5

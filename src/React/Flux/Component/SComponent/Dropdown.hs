@@ -25,13 +25,11 @@ module React.Flux.Component.SComponent.Dropdown
     , dropdown
     ) where
 
-import           Control.DeepSeq                               (NFData)
 import           Control.Lens
-import qualified Data.Text                                     as T
-import           Data.Typeable                                 (Typeable)
-import           GHC.Generics                                  (Generic)
-import           React.Flux                                    (($=), (@=))
-import qualified React.Flux                                    as RF
+import qualified Data.Text                                       as T
+import           React.Flux                                      (($=), (@=))
+import qualified React.Flux                                      as RF
+import           React.Flux.Component.SComponent.Internal.Import (Generic, NFData, Typeable)
 import           React.Flux.Component.SComponent.Internal.Util
 import           React.Flux.Component.SComponent.Types
 
